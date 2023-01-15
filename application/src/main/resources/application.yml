@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: houseplants
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5445/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
