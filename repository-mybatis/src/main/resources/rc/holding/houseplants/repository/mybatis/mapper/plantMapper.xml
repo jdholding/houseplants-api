@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rc.holding.houseplants.repository.mybatis.mapper.plantMapper">
+
+  <resultMap id="plantMap" type="Plant">
+    <id property="id" column="id" />
+    <result property="trefleId" column="trefle_id" />
+    <result property="parentId" column="parent_id" />
+    <result property="family" column="family" />
+    <result property="genus" column="genus" />
+    <result property="species" column="species" />
+    <result property="commonName" column="common_name" />
+    <resutl property="dateCreated" column="date_created" />
+  </resultMap>
+
+  <sql id="selectFrom">
+    select
+      id,
+      trefle_id,
+      parent_id,
+      family,
+      genus,
+      species,
+      common_name,
+      date_created
+    from 
+      houseplants.plants 
+  </sql>
+
+  <select id="findAll" resultMap="plantMap">
+    <include refid="selectFrom" />
+    order by
+      date_created
+  </select>
+</mapper>  

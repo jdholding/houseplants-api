@@ -32,10 +32,11 @@ project(":application"){
 
 	dependencies {
 		implementation(project(":domain"))
+		implementation(project(":repository-api"))
 		implementation("org.springframework.boot:spring-boot-starter-hateoas")
 		implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 		implementation("org.springframework.boot:spring-boot-starter-web")
-		implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0")
+		implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1")
 		compileOnly("org.projectlombok:lombok")
 		// developmentOnly("org.springframework.boot:spring-boot-devtools")
 		runtimeOnly("org.postgresql:postgresql")
@@ -54,13 +55,21 @@ project(":domain"){
 project(":repository-api"){
 	dependencies{
 		implementation(project(":domain"))
+		implementation("org.springframework.boot:spring-boot-starter:3.0.1")
 		compileOnly("org.projectlombok:lombok")
 		annotationProcessor("org.projectlombok:lombok")
 	}
 }
 
 project(":repository-mybatis"){
-
+	dependencies {
+		implementation(project(":repository-api"))
+		implementation(project(":domain"))
+		implementation("org.springframework.boot:spring-boot-starter:3.0.1")
+		implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1")
+		compileOnly("org.projectlombok:lombok")
+		annotationProcessor("org.projectlombok:lombok")
+	}
 }
 
 tasks.withType<Test> {
