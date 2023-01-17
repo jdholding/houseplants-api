@@ -1,4 +1,4 @@
-package rc.holding.houseplants.contoller;
+package rc.holding.application.contoller;
 
 import java.util.List;
 

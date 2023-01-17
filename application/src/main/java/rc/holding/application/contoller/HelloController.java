@@ -1,4 +1,4 @@
-package rc.holding.houseplants.contoller;
+package rc.holding.application.contoller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
