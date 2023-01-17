@@ -11,7 +11,7 @@
   </settings>
 
   <mappers>
-    <mapper resource="rc/holding/houseplants/repository/mybatis/mapper/plantMapper.xml"
+    <mapper resource="rc/holding/houseplants/mybatis/repository/mapper/plantMapper.xml" />
   </mappers>
 
 </configuration>  

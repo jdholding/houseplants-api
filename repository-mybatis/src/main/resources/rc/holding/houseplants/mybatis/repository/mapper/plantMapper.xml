@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="rc.holding.houseplants.repository.mybatis.mapper.plantMapper">
+<mapper namespace="rc.holding.houseplants.mybatis.repository.mapper.plantMapper">
 
   <resultMap id="plantMap" type="Plant">
     <id property="id" column="id" />
@@ -12,7 +12,7 @@
     <result property="genus" column="genus" />
     <result property="species" column="species" />
     <result property="commonName" column="common_name" />
-    <resutl property="dateCreated" column="date_created" />
+    <result property="dateCreated" column="date_created" />
   </resultMap>
 
   <sql id="selectFrom">

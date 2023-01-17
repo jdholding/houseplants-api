@@ -5,11 +5,7 @@ spring:
     url: jdbc:postgresql://localhost:5445/postgres
     username: postgres
     password: postgres
-    driver-class-name: org.postgresql.Driver 
-  profiles:
-    active: dev
+    driver-class-name: org.postgresql.Driver
 server:
     servlet:
-      context-path: /plants     
-mybatis:
-  config-location: classpath:mybatis-config.xml
+      context-path: /

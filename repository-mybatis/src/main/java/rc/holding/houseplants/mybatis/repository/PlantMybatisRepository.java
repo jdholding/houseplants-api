@@ -1,4 +1,4 @@
-package rc.holding.houseplants.repository.mybatis; 
+package rc.holding.houseplants.mybatis.repository;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import rc.holding.houseplants.repository.api.PlantRepository;
 @Repository
 public class PlantMybatisRepository implements PlantRepository {
 
-    private final String namespace = "rc.holding.houseplants.repository.mybatis.mapper.plantMapper"; 
+    private final String namespace = "rc.holding.houseplants.mybatis.repository.mapper.plantMapper";
     private SqlSession sqlSession; 
     
     @Override
