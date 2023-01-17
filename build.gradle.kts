@@ -17,7 +17,9 @@ application {
 	apply(plugin = "org.springframework.boot")
 	dependencies {
 		implementation("org.springframework.boot:spring-boot-starter:3.0.1")
-		testImplementation("org.springframework.boot:spring-boot-starter-test")
+		implementation("org.springframework.boot:spring-boot-starter-web:3.0.1")
+		implementation("org.springframework.boot:spring-boot-configuration-processor:3.0.1")
+		testImplementation("org.springframework.boot:spring-boot-starter-test:3.0.1")
 	}
 }
 
@@ -54,9 +56,9 @@ project(":application"){
 		implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1")
 		compileOnly("org.projectlombok:lombok")
 		// developmentOnly("org.springframework.boot:spring-boot-devtools")
-		runtimeOnly("org.postgresql:postgresql")
+		runtimeOnly("org.postgresql:postgresql:42.5.1")
 		annotationProcessor("org.projectlombok:lombok")
-		testImplementation("org.springframework.boot:spring-boot-starter-test")
+		testImplementation("org.springframework.boot:spring-boot-starter-test:3.0.1")
 	}
 }
 
@@ -91,13 +93,13 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-//tasks.named<BootJar>("bootJar") {
-//    archiveFileName.set("houseplants.jar")
-//    // mainClassName = "rc.holding.houseplants.HouseplantsApplication"
-//}
-//
-//tasks.named<BootRun>("bootRun") {
-//    mainClass.set("rc.holding.houseplants.HouseplantsApplication")
-//    // args("--spring.profiles.active=demo")
-//}
+tasks.named<BootJar>("bootJar") {
+   archiveFileName.set("houseplants.jar")
+   // mainClassName = "rc.holding.houseplants.HouseplantsApplication"
+}
+
+tasks.named<BootRun>("bootRun") {
+   mainClass.set("rc.holding.houseplants.HouseplantsApplication")
+   // args("--spring.profiles.active=demo")
+}
 
