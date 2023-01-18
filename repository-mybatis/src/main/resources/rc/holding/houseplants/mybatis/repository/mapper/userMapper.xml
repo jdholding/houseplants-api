@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rc.holding.houseplants.mybatis.repository.mapper.userMapper">
+
+  <resultMap id="userMap" type="User">
+    <id property="id" column="id" />
+    <result property="firstName" column="first_name" />
+    <result property="lastName" column="last_name" />
+    <result property="email" column="email" />
+    <result property="login" column="login" />
+  </resultMap>
+
+    <sql id="selectFrom">
+        select
+          id,
+          first_name,
+          last_name,
+          email,
+          login
+        from
+          houseplants.users  
+    </sql>
+    
+  </mapper>

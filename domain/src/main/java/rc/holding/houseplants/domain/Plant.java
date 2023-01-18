@@ -1,6 +1,7 @@
 package rc.holding.houseplants.domain;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import lombok.Data;
 
@@ -13,5 +14,5 @@ public class Plant {
     String genus; 
     String species;
     String commonName; 
-    LocalDateTime dateCreated; 
+    OffsetDateTime dateCreated; 
 }

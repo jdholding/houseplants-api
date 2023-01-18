@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5445/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+app:
+  photos:
+    original-path: /srv/houseplants/originals
+    thumbnail-path: /srv/houseplants/thumbnails

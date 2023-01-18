@@ -11,11 +11,15 @@ import rc.holding.houseplants.repository.api.PlantRepository;
 @Repository
 public class PlantMybatisRepository implements PlantRepository {
 
-    private final String namespace = "rc.holding.houseplants.mybatis.repository.mapper.plantMapper";
-    private SqlSession sqlSession; 
+    private final String namespace = "rc.holding.houseplants.mybatis.repository.mapper.plantMapper.";
+    private SqlSession sqlSession;
+    
+    public PlantMybatisRepository(SqlSession sqlSession) {
+        this.sqlSession = sqlSession; 
+    }
     
     @Override
     public List<Plant> findAllPlants() {
-        return sqlSession.selectList(namespace + "findAll"); 
+        return sqlSession.selectList(namespace + "findAllPlants");
     }
 }

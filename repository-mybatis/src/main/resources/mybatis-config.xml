@@ -10,8 +10,15 @@
     <setting name="jdbcTypeForNull" value="NULL" />
   </settings>
 
+  <typeAliases>
+    <package name="rc.holding.houseplants.domain"/>
+  </typeAliases>
+
   <mappers>
     <mapper resource="rc/holding/houseplants/mybatis/repository/mapper/plantMapper.xml" />
+    <mapper resource="rc/holding/houseplants/mybatis/repository/mapper/userMapper.xml" />
+    <mapper resource="rc/holding/houseplants/mybatis/repository/mapper/photoMapper.xml" />
+    <mapper resource="rc/holding/houseplants/mybatis/repository/mapper/commentMapper.xml" />
   </mappers>
 
-</configuration>  
+</configuration> 

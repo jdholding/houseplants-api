@@ -11,8 +11,8 @@ import javax.sql.DataSource;
 @Configuration
 @EnableConfigurationProperties(AppProperties.class)
 public class AppConfig {
-//    @Autowired
-//    DataSource dataSource;
+   @Autowired
+   DataSource dataSource;
     
     private AppProperties appProperties; 
 
@@ -20,8 +20,8 @@ public class AppConfig {
         this.appProperties = appProperties; 
     }
 
-//     @Bean
-//     public DataSourceTransactionManager transactionManager() {
-//         return new DataSourceTransactionManager(dataSource);
-//     }
+    @Bean
+    public DataSourceTransactionManager transactionManager() {
+        return new DataSourceTransactionManager(dataSource);
+    }
 }

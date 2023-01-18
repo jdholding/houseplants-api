@@ -29,7 +29,7 @@
       houseplants.plants 
   </sql>
 
-  <select id="findAll" resultMap="plantMap">
+  <select id="findAllPlants" resultMap="plantMap">
     <include refid="selectFrom" />
     order by
       date_created
