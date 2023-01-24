@@ -22,5 +22,30 @@
         from
           houseplants.users  
     </sql>
+
+    <select id="findAll" resultMap="userMap">
+      <include refid="selectFrom" />
+      order by
+        id
+    </select>
+
+    <select id="findById" resultMap="userMap">
+      <include refid="selectFrom" />
+      where
+        id = #{id}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true">
+      insert into houseplants.users (
+        first_name,
+        last_name,
+        email,
+        login)
+      values ( 
+        #{firstName},
+        #{lastName},
+        #{email},
+        #{login})  
+    </insert>
     
-  </mapper>
+</mapper>

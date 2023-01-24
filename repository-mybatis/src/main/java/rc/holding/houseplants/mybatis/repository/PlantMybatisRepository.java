@@ -1,6 +1,7 @@
 package rc.holding.houseplants.mybatis.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -21,5 +22,16 @@ public class PlantMybatisRepository implements PlantRepository {
     @Override
     public List<Plant> findAllPlants() {
         return sqlSession.selectList(namespace + "findAllPlants");
+    }
+
+    @Override
+    public Optional<Plant> findById(Integer id) {
+        return Optional.ofNullable(sqlSession.selectOne(namespace + "findById", id)); 
+    }
+
+    @Override
+    public Plant insert(Plant plant) {
+        Integer id = sqlSession.insert(namespace + "insert", plant); 
+        return sqlSession.selectOne(namespace + "findById", id); 
     }
 }

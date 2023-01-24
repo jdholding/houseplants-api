@@ -6,5 +6,5 @@ spring:
     driver-class-name: org.postgresql.Driver
 app:
   photos:
-    original-path: /srv/houseplants/originals
-    thumbnail-path: /srv/houseplants/thumbnails
+    original-path: Users/jdholding/srv/houseplants/originals
+    thumbnail-path: Users/jdholding/srv/houseplants/thumbnails

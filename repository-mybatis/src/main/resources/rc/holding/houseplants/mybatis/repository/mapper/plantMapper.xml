@@ -34,4 +34,27 @@
     order by
       date_created
   </select>
+
+  <select id="findById" resultMap="plantMap">
+    <include refid="selectFrom" />
+    where
+      id = #{id}
+  </select>
+
+  <insert id="insert" useGeneratedKeys="true">
+    insert into houseplants.plants (
+      trefle_id,
+      parent_id,
+      family,
+      genus,
+      species,
+      common_name)
+    values (
+      #{trefleId},
+      #{parentId},
+      #{family},
+      #{genus},
+      #{species},
+      #{commonName})  
+  </insert>
 </mapper>  
