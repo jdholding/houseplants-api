@@ -57,4 +57,17 @@
       #{species},
       #{commonName})  
   </insert>
+
+      <update id="update">
+      update houseplants.plants
+      <set>
+        <if test="trefleId != null">trefle_id = #{trefleId},</if>
+        <if test="parentId != null">parent_id = #{parentId},</if> 
+        <if test="family != null">family = #{family},</if>
+        <if test="genus != null">genus = #{genus}</if>
+        <if test="species != null">species = #{species}</if>
+        <if test="commonName != null">common_name = #{commonName}</if>
+      </set>
+      where id = #{id}
+    </update>
 </mapper>  

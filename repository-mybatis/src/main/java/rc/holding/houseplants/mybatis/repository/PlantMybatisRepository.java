@@ -34,4 +34,10 @@ public class PlantMybatisRepository implements PlantRepository {
         Integer id = sqlSession.insert(namespace + "insert", plant); 
         return sqlSession.selectOne(namespace + "findById", id); 
     }
+
+    @Override
+    public Plant update(Plant plant) {
+        sqlSession.update(namespace + "update", plant);
+        return sqlSession.selectOne(namespace + "findById", plant.getId());  
+    }
 }

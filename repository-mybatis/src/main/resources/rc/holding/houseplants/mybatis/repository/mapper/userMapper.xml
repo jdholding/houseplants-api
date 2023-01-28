@@ -48,4 +48,19 @@
         #{login})  
     </insert>
     
+    <update id="update">
+      update houseplants.users
+      <set>
+        <if test="firstName != null">first_name = #{firstName},</if>
+        <if test="lastName != null">last_name = #{lastName},</if> 
+        <if test="email != null">email = #{email},</if>
+        <if test="login != null">login = #{login}</if>
+      </set>
+      where id = #{id}
+    </update>
+
+    <delete id="delete">
+      delete from houseplants.users
+      where id = #{id}
+    </delete>
 </mapper>

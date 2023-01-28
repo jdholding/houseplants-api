@@ -11,4 +11,6 @@ public interface PlantRepository {
     Optional<Plant> findById(Integer id);
     
     Plant insert(Plant plant); 
+
+    Plant update(Plant plant); 
 }

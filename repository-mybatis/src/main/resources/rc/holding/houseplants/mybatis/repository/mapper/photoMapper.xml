@@ -20,5 +20,26 @@
     from
       houseplants.photos  
   </sql>
-      
+
+  <select id="findAll" resultMap="photoMap">
+    <include refid="selectFrom" />
+    order by
+      plant_id,
+      date_created
+  </select>
+
+  <select id="findById" resultMap="photoMap">
+    <include refid="selectFrom" />
+    where
+      id = #{id}
+  </select>
+
+  <insert id="insert" useGeneratedKeys="true">
+    insert into houseplants.photos (
+      plant_id,
+      file_uri)
+    values (
+      #{plantId},
+      #{file_uri})  
+  </insert>    
 </mapper>  
