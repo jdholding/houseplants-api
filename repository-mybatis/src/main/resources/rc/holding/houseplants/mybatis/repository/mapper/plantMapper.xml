@@ -29,10 +29,24 @@
       houseplants.plants 
   </sql>
 
-  <select id="findAllPlants" resultMap="plantMap">
+  <sql id="where">
+    <where>
+      <if test="parentId != null">
+        parent_id = #{parentId}
+      </if>
+      <if test="nameFragment != null">
+        and lower(species) like ('%' || lower(#{nameFragment} || '%'))
+      </if>
+      <if test="trefleId != null">
+        and trefle_id = #{trefleId}
+      </if>
+    </where>
+  </sql>
+
+  <select id="findAllByParams" resultMap="plantMap">
     <include refid="selectFrom" />
-    order by
-      date_created
+    <include refid="where" />
+    <include refid="sortMapper.orderBy" />
   </select>
 
   <select id="findById" resultMap="plantMap">

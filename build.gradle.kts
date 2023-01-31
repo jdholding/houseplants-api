@@ -43,6 +43,8 @@ dependencies {
 		implementation(project(":domain"))
 		implementation(project(":repository-api"))
 		implementation(project(":repository-mybatis"))
+		implementation(project(":service-api"))
+		implementation(project(":service-spring"))
 		implementation("org.springframework.boot:spring-boot-starter:3.0.1")
 		implementation("org.springframework.boot:spring-boot-starter-web:3.0.1")
 		implementation("org.springframework.boot:spring-boot-configuration-processor:3.0.1")

@@ -6,38 +6,48 @@ import java.util.Optional;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import rc.holding.houseplants.domain.Plant;
+import rc.holding.houseplants.domain.search.tools.Page;
+import rc.holding.houseplants.domain.search.tools.PagedQueryParams;
+import rc.holding.houseplants.domain.search.tools.QueryParams;
+import rc.holding.houseplants.repository.annotations.MapperNamespace;
 import rc.holding.houseplants.repository.api.PlantRepository;
 
 @Repository
-public class PlantMybatisRepository implements PlantRepository {
+@AllArgsConstructor
+@MapperNamespace("rc.holding.houseplants.mybatis.repository.mapper.plantMapper")
+public class PlantMybatisRepository extends AbstractMapper implements PlantRepository {
 
-    private final String namespace = "rc.holding.houseplants.mybatis.repository.mapper.plantMapper.";
+    @Getter(AccessLevel.PROTECTED)
     private SqlSession sqlSession;
     
-    public PlantMybatisRepository(SqlSession sqlSession) {
-        this.sqlSession = sqlSession; 
-    }
-    
     @Override
-    public List<Plant> findAllPlants() {
-        return sqlSession.selectList(namespace + "findAllPlants");
+    public Optional<Plant> findById(Integer id) {
+        return selectOptionalOne("findById", id);
     }
 
     @Override
-    public Optional<Plant> findById(Integer id) {
-        return Optional.ofNullable(sqlSession.selectOne(namespace + "findById", id)); 
+    public Iterable<Plant> findAllByParams(QueryParams<Plant> params) {
+        return selectList("findAllByParams", params);
+    }
+
+    @Override
+    public Page<Plant> findPageByParams(PagedQueryParams<Plant> params) {
+        return selectPagedList("findAllByParams", params); 
     }
 
     @Override
     public Plant insert(Plant plant) {
-        Integer id = sqlSession.insert(namespace + "insert", plant); 
-        return sqlSession.selectOne(namespace + "findById", id); 
+        Integer id = insert("insert", plant); 
+        return selectOne("findById", id); 
     }
 
     @Override
     public Plant update(Plant plant) {
-        sqlSession.update(namespace + "update", plant);
-        return sqlSession.selectOne(namespace + "findById", plant.getId());  
+        update("update", plant);
+        return selectOne("findById", plant.getId());  
     }
 }

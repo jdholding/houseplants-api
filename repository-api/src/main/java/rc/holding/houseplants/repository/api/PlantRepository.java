@@ -4,11 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import rc.holding.houseplants.domain.Plant;
+import rc.holding.houseplants.repository.tools.PagedReadRepository;
 
-public interface PlantRepository {
-    List<Plant> findAllPlants();
-
-    Optional<Plant> findById(Integer id);
+public interface PlantRepository extends PagedReadRepository<Plant, Integer> {
     
     Plant insert(Plant plant); 
 
