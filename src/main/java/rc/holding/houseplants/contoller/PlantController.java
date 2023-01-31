@@ -18,11 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
 import rc.holding.houseplants.domain.Plant;
+import rc.holding.houseplants.domain.hateoas.api.PlantModel;
 import rc.holding.houseplants.domain.search.PlantParams;
 import rc.holding.houseplants.domain.search.PlantParams.Field;
 import rc.holding.houseplants.domain.search.tools.Page;
 import rc.holding.houseplants.domain.search.tools.Sorter;
 import rc.holding.houseplants.exception.ResourceNotFoundException;
+import rc.holding.houseplants.hateoas.embeddedHandler.PlantModelEmbeddedHandler;
+import rc.holding.houseplants.hateoas.util.PagedModelHelper;
 import rc.holding.houseplants.repository.api.PlantRepository;
 
 @RestController
@@ -31,9 +34,10 @@ import rc.holding.houseplants.repository.api.PlantRepository;
 public class PlantController {
 
     private final PlantRepository repo;
+    private final PlantModelEmbeddedHandler plantModelHandler; 
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Plant> getPlants(
+    public CollectionModel<PlantModel> getPlants(
         @RequestParam(value = "parentId", required = false) Integer parentId,
         @RequestParam(value = "trefleId", required = false) Integer trefleId,
         @RequestParam(value = "nameFragment", required = false) String nameFragment,
@@ -50,8 +54,15 @@ public class PlantController {
                                 .sorters(Sorter.ofAliases(sorters, Field.SORTFIELD_MAP, Field.DEFAULT_SORTER)) 
                                 .build();   
 
-        var plants = repo.findPageByParams(params);
-        return plants.getContent(); 
+        var plantPage = repo.findPageByParams(params);
+        var plantResource = plantModelHandler.toCollectionModel(plantPage.getContent(), null);
+        return PagedModelHelper.<PlantModel>builder()
+            .controllerClass(this.getClass())
+            .queryParam("sort", sorters)
+            .collectionModel(plantResource)
+            .pageMetadata(plantPage.getMetadata())
+            .build()
+            .toPagedModel();   
     }
 
     @GetMapping(path="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

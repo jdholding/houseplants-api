@@ -1,6 +1,3 @@
-import org.springframework.boot.gradle.tasks.bundling.BootJar
-import org.springframework.boot.gradle.tasks.run.BootRun
-
 plugins {
 	java
 	`java-library`
@@ -60,21 +57,8 @@ dependencies {
 		annotationProcessor("org.projectlombok:lombok")
 	}
 
-
-
-
-
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-//tasks.named<BootJar>("bootJar") {
-//   archiveFileName.set("houseplants.jar")
-//   // mainClassName = "rc.holding.houseplants.HouseplantsApplication"
-//}
-
-//tasks.named<BootRun>("bootRun") {
-//   mainClass.set("rc.holding.houseplants.HouseplantsApplication")
-//   // args("--spring.profiles.active=demo")
-//}
 

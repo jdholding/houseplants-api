@@ -1,6 +1,5 @@
 package rc.holding.houseplants.domain;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 import lombok.Data;
