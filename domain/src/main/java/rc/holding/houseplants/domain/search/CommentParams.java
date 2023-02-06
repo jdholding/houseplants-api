@@ -1,11 +1,9 @@
 package rc.holding.houseplants.domain.search;
 
 import java.util.Collection;
+import java.util.Map;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Value;
+import lombok.*;
 import rc.holding.houseplants.domain.Comment;
 import rc.holding.houseplants.domain.search.tools.PagedQueryParams;
 import rc.holding.houseplants.domain.search.tools.SortField;
@@ -21,7 +19,7 @@ public class CommentParams implements PagedQueryParams<Comment> {
     Integer page; 
     Integer size; 
 
-    @Singular Collection<Sorter<Comment>> sorters; 
+    @Singular Collection<Sorter<Comment>> sorters;
 
     @AllArgsConstructor
     public enum Field implements SortField<Comment> {
