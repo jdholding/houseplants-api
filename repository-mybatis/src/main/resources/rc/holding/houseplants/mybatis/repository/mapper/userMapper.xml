@@ -9,7 +9,7 @@
     <result property="firstName" column="first_name" />
     <result property="lastName" column="last_name" />
     <result property="email" column="email" />
-    <result property="login" column="login" />
+    <result property="username" column="username" />
   </resultMap>
 
     <sql id="selectFrom">
@@ -18,7 +18,7 @@
           first_name,
           last_name,
           email,
-          login
+          username
         from
           houseplants.users  
     </sql>
@@ -40,12 +40,12 @@
         first_name,
         last_name,
         email,
-        login)
+        username)
       values ( 
         #{firstName},
         #{lastName},
         #{email},
-        #{login})  
+        #{username})
     </insert>
     
     <update id="update">
@@ -54,7 +54,7 @@
         <if test="firstName != null">first_name = #{firstName},</if>
         <if test="lastName != null">last_name = #{lastName},</if> 
         <if test="email != null">email = #{email},</if>
-        <if test="login != null">login = #{login}</if>
+        <if test="username != null">username = #{username}</if>
       </set>
       where id = #{id}
     </update>

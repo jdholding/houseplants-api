@@ -6,14 +6,18 @@ import org.springframework.stereotype.Component;
 import lombok.AllArgsConstructor;
 import rc.holding.houseplants.domain.Plant;
 import rc.holding.houseplants.domain.hateoas.api.PlantModel;
+import rc.holding.houseplants.domain.search.CommentParams;
+import rc.holding.houseplants.domain.search.PhotoParms;
 import rc.holding.houseplants.hateoas.assembler.PlantModelAssembler;
+import rc.holding.houseplants.repository.api.CommentRepository;
 import rc.holding.houseplants.repository.api.PhotoRepository;
 
 @Component
 @AllArgsConstructor
 public class PlantModelEmbeddedHandler implements EmbeddedHandler<Plant, PlantModel> {
 
-    // private final PhotoRepository photoRepo; 
+     private final PhotoRepository photoRepo;
+     private final CommentRepository commentRepo;
     
     public enum Embedded implements Embeddable<PlantModel> {
         PHOTOS,
@@ -30,12 +34,13 @@ public class PlantModelEmbeddedHandler implements EmbeddedHandler<Plant, PlantMo
         for (Embedded embedded : (Embedded[]) embeddeds) {
             switch (embedded) {
                 case PHOTOS:
-                    // TODO embed photos
-                    // var photos = photoRepo.getPhotosByPlantId
-                    // maybe only the most recent 10 or so
-                    // model.embed("photos", photos)
+                    var photoParams = PhotoParms.builder().plantId(entity.getId()).size(10).build();
+                    var photos = photoRepo.findAllByParams(photoParams);
+                    model.embed("photos", photos);
                 case COMMENTS:
-                    // TODO embed comments    
+                    var commentParams = CommentParams.builder().plantId(entity.getId()).size(10).build();
+                    var comments = commentRepo.findAllByParams(commentParams);
+                    model.embed("comments", comments);
             }
         }
         return model; 
