@@ -4,12 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import rc.holding.houseplants.domain.Photo;
+import rc.holding.houseplants.repository.tools.PagedReadRepository;
 
-public interface PhotoRepository {
+public interface PhotoRepository extends PagedReadRepository<Photo, Integer> {
     
-    List<Photo> findAll(); 
-
-    Optional<Photo> findById(Integer id);
-    
-    Photo insert(Photo photo); 
+    Integer insert(Photo photo); 
 }

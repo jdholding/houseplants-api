@@ -40,9 +40,9 @@ public class PlantMybatisRepository extends AbstractMapper implements PlantRepos
     }
 
     @Override
-    public Plant insert(Plant plant) {
-        Integer id = insert("insert", plant); 
-        return selectOne("findById", id); 
+    public Integer insert(Plant plant) {
+       insert("insert", plant);
+       return plant.getId();  
     }
 
     @Override

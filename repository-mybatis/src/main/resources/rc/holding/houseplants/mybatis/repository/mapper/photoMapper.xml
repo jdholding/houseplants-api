@@ -15,17 +15,29 @@
     select
       id,
       plant_id,
-      file_uri,
+      photo_uri,
+      thumbnail_uri,
       date_created
     from
       houseplants.photos  
   </sql>
 
-  <select id="findAll" resultMap="photoMap">
+  <sql id="where">
+    <if test="plantId != null">
+      plant_id = #{plantId}
+    </if>
+    <if test="dateAfter != null">
+      and date_created &gt;= #{dateAfter}
+    </if>
+    <if test="dateBefore != null">
+      and date_created &lt;= #{dateBefore}
+    </if>
+  </sql>
+
+  <select id="findAllByParams" resultMap="photoMap">
     <include refid="selectFrom" />
-    order by
-      plant_id,
-      date_created
+    <include refid="where" />
+    <include refid="sortMapper.orderBy" />
   </select>
 
   <select id="findById" resultMap="photoMap">
@@ -37,9 +49,12 @@
   <insert id="insert" useGeneratedKeys="true">
     insert into houseplants.photos (
       plant_id,
-      file_uri)
+      photo_uri,
+      thumbnail_uri)
     values (
       #{plantId},
-      #{file_uri})  
-  </insert>    
+      #{photoUri},
+      #{thumbnailUri})  
+  </insert>
+
 </mapper>  

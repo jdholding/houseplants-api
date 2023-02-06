@@ -49,10 +49,10 @@ dependencies {
 		implementation("org.springframework.boot:spring-boot-starter-hateoas:3.0.1")
 		implementation("org.springframework.boot:spring-boot-starter-thymeleaf:3.0.1")
 		implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1")
+		implementation("org.springframework.boot:spring-boot-starter-validation:3.0.1")
 		implementation("org.springframework.hateoas:spring-hateoas:2.0.1")
-		// implementation("org.springframework.boot:spring-boot-starter-jdbc:3.0.1")
 		compileOnly("org.projectlombok:lombok")
-		// developmentOnly("org.springframework.boot:spring-boot-devtools")
+		// developmentOnly("org.springframework.boot:spring-boot-devtools:3.0.1")
 		runtimeOnly("org.postgresql:postgresql:42.5.1")
 		annotationProcessor("org.projectlombok:lombok")
 	}

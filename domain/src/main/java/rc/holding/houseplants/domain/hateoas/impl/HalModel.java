@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Getter;
 /**
- * Adds support for hal model embedding which allows to chace resources to RepresentationModel
+ * Adds support for hal model embedding which allows to embed resources to RepresentationModel
  */
 public class HalModel<T extends RepresentationModel<? extends T>> extends RepresentationModel<T> {
     @Getter

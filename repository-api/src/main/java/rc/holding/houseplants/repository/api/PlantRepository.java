@@ -8,7 +8,7 @@ import rc.holding.houseplants.repository.tools.PagedReadRepository;
 
 public interface PlantRepository extends PagedReadRepository<Plant, Integer> {
     
-    Plant insert(Plant plant); 
+    Integer insert(Plant plant); 
 
     Plant update(Plant plant); 
 }

@@ -11,10 +11,16 @@ import lombok.Data;
 @Data
 public class AppProperties {
     private final Photos photos = new Photos();
+    private final Url url = new Url(); 
 
     @Data
     public static class Photos {
         private String originalPath;
         private String thumbnailPath;
+    }
+
+    @Data
+    public static class Url {
+      private String context;
     }
 }

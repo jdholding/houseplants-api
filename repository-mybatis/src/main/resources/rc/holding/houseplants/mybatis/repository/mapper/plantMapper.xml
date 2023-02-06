@@ -8,6 +8,7 @@
     <id property="id" column="id" />
     <result property="trefleId" column="trefle_id" />
     <result property="parentId" column="parent_id" />
+    <result property="userId" column="user_id" />
     <result property="family" column="family" />
     <result property="genus" column="genus" />
     <result property="species" column="species" />
@@ -20,6 +21,7 @@
       id,
       trefle_id,
       parent_id,
+      user_id,
       family,
       genus,
       species,
@@ -34,6 +36,9 @@
       <if test="parentId != null">
         parent_id = #{parentId}
       </if>
+      <if test="user != null">
+        user_id = #{userId}
+      </if> 
       <if test="nameFragment != null">
         and lower(species) like ('%' || lower(#{nameFragment} || '%'))
       </if>
@@ -55,10 +60,11 @@
       id = #{id}
   </select>
 
-  <insert id="insert" useGeneratedKeys="true">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
     insert into houseplants.plants (
       trefle_id,
       parent_id,
+      user_id,
       family,
       genus,
       species,
@@ -66,10 +72,11 @@
     values (
       #{trefleId},
       #{parentId},
+      #{userId},
       #{family},
       #{genus},
       #{species},
-      #{commonName})  
+      #{commonName})   
   </insert>
 
       <update id="update">
@@ -77,6 +84,7 @@
       <set>
         <if test="trefleId != null">trefle_id = #{trefleId},</if>
         <if test="parentId != null">parent_id = #{parentId},</if> 
+        <if test="userId != null">user_id = #{userId},</if>
         <if test="family != null">family = #{family},</if>
         <if test="genus != null">genus = #{genus}</if>
         <if test="species != null">species = #{species}</if>

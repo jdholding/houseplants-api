@@ -18,7 +18,9 @@ import rc.holding.houseplants.domain.search.tools.Sorter;
 public class PlantParams implements PagedQueryParams<Plant>{
     Integer parentId;
     Integer trefleId;
-    String nameFragment; 
+    Integer userId;
+    String nameFragment;
+                      
 
     Integer page; 
     Integer size; 
@@ -27,13 +29,15 @@ public class PlantParams implements PagedQueryParams<Plant>{
 
     @AllArgsConstructor
     public enum Field implements SortField<Plant> {
+        userId("user_id"),
         parentId("parent_id"),
         dateCreated("date_created");
 
         @Getter final String dbname; 
 
-        public static final Sorter<Plant> DEFAULT_SORTER = parentId.asc();
+        public static final Sorter<Plant> DEFAULT_SORTER = dateCreated.desc();
         public static final Map<Field, String> SORTFIELD_MAP = SortField.Mapping.of(Field.class)
+        .put(Field.userId, "userId")
         .put(Field.parentId, "parentId")
         .put(Field.dateCreated, "dateCreated")
         .get();

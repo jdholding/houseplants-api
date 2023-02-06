@@ -12,6 +12,7 @@ import rc.holding.houseplants.domain.hateoas.impl.HalModel;
 public class PlantModel extends HalModel<PlantModel>{
     @Getter private final Integer parentId;
     @Getter private final Integer trefleId;
+    @Getter private final Integer userId;
     @Getter private final String family;
     @Getter private final String genus; 
     @Getter private final String species;
@@ -20,7 +21,8 @@ public class PlantModel extends HalModel<PlantModel>{
     
     public PlantModel(Plant plant) {
         this.parentId = plant.getParentId(); 
-        this.trefleId = plant.getTrefleId(); 
+        this.trefleId = plant.getTrefleId();
+        this.userId = plant.getUserId();  
         this.family = plant.getFamily(); 
         this.genus = plant.getGenus(); 
         this.species = plant.getSpecies();
