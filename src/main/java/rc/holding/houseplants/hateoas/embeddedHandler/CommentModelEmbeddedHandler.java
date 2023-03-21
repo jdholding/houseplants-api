@@ -4,12 +4,11 @@ import lombok.AllArgsConstructor;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 import rc.holding.houseplants.domain.Comment;
-import rc.holding.houseplants.domain.Plant;
 import rc.holding.houseplants.domain.hateoas.api.CommentModel;
-import rc.holding.houseplants.domain.hateoas.api.PlantModel;
 import rc.holding.houseplants.exception.ResourceNotFoundException;
 import rc.holding.houseplants.hateoas.assembler.CommentModelAssembler;
 import rc.holding.houseplants.hateoas.assembler.PlantModelAssembler;
+import rc.holding.houseplants.hateoas.assembler.UserModelAssembler;
 import rc.holding.houseplants.repository.api.PlantRepository;
 import rc.holding.houseplants.repository.api.UserRepository;
 
@@ -34,10 +33,10 @@ public class CommentModelEmbeddedHandler implements EmbeddedHandler<Comment, Com
             switch (embedded) {
                 case USER:
                     var user = userRepo.findById(entity.getUserId()).orElseThrow(() -> new ResourceNotFoundException(entity.getUserId()));
-                    model.embed("user", user);
+                    model.embed("user", new UserModelAssembler().toModel(user));
                 case PLANT:
                     var plant = plantRepo.findById(entity.getPlantId()).orElseThrow(() -> new ResourceNotFoundException(entity.getPlantId()));
-                    model.embed("plant", plant);
+                    model.embed("plant", new PlantModelAssembler().toModel(plant));
             }
         }
         return model;

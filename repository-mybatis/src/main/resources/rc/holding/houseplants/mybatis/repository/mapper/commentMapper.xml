@@ -26,15 +26,17 @@
   </sql>
 
   <sql id="where">
-    <if test="plantId != null">
-      plant_id = #{plantid}
-    </if>
-    <if test="userId != null">
-      and user_id = #{userId}
-    </if>
-    <if test="isHidden != null">
-      and is_hidden = #{isHidden}
-    </if>
+    <where>
+      <if test="plantId != null">
+        plant_id = #{plantId}
+      </if>
+      <if test="userId != null">
+        and user_id = #{userId}
+      </if>
+      <if test="isHidden != null">
+        and is_hidden = #{isHidden}
+      </if>
+    </where>
   </sql>
 
   <select id="findById" resultMap="commentMap">
