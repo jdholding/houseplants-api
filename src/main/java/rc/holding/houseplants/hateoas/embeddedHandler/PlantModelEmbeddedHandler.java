@@ -1,13 +1,14 @@
 package rc.holding.houseplants.hateoas.embeddedHandler;
 
+import lombok.AllArgsConstructor;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
-
-import lombok.AllArgsConstructor;
 import rc.holding.houseplants.domain.Plant;
 import rc.holding.houseplants.domain.hateoas.api.PlantModel;
 import rc.holding.houseplants.domain.search.CommentParams;
 import rc.holding.houseplants.domain.search.PhotoParms;
+import rc.holding.houseplants.hateoas.assembler.CommentModelAssembler;
+import rc.holding.houseplants.hateoas.assembler.PhotoModelAssembler;
 import rc.holding.houseplants.hateoas.assembler.PlantModelAssembler;
 import rc.holding.houseplants.repository.api.CommentRepository;
 import rc.holding.houseplants.repository.api.PhotoRepository;
@@ -36,11 +37,11 @@ public class PlantModelEmbeddedHandler implements EmbeddedHandler<Plant, PlantMo
                 case PHOTOS:
                     var photoParams = PhotoParms.builder().plantId(entity.getId()).size(10).build();
                     var photos = photoRepo.findAllByParams(photoParams);
-                    model.embed("photos", photos);
+                    model.embed("photos", new PhotoModelAssembler().toCollectionModel(photos));
                 case COMMENTS:
                     var commentParams = CommentParams.builder().plantId(entity.getId()).size(10).build();
                     var comments = commentRepo.findAllByParams(commentParams);
-                    model.embed("comments", comments);
+                    model.embed("comments", new CommentModelAssembler().toCollectionModel(comments));
             }
         }
         return model; 

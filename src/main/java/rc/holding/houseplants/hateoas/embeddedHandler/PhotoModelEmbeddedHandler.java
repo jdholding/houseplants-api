@@ -7,6 +7,7 @@ import rc.holding.houseplants.domain.Photo;
 import rc.holding.houseplants.domain.hateoas.api.PhotoModel;
 import rc.holding.houseplants.exception.ResourceNotFoundException;
 import rc.holding.houseplants.hateoas.assembler.PhotoModelAssembler;
+import rc.holding.houseplants.hateoas.assembler.PlantModelAssembler;
 import rc.holding.houseplants.repository.api.PlantRepository;
 
 @Component
@@ -26,7 +27,7 @@ public class PhotoModelEmbeddedHandler implements EmbeddedHandler<Photo, PhotoMo
             switch (embedded) {
                 case PLANT:
                     var plant = plantRepo.findById(entity.getPlantId()).orElseThrow(() -> new ResourceNotFoundException(entity.getPlantId()));
-                    model.embed("plant", plant);
+                    model.embed("plant", new PlantModelAssembler().toModel(plant));
             }
         }
         return model;

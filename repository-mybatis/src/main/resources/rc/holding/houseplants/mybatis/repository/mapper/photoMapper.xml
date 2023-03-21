@@ -23,15 +23,17 @@
   </sql>
 
   <sql id="where">
-    <if test="plantId != null">
-      plant_id = #{plantId}
-    </if>
-    <if test="dateAfter != null">
-      and date_created &gt;= #{dateAfter}
-    </if>
-    <if test="dateBefore != null">
-      and date_created &lt;= #{dateBefore}
-    </if>
+    <where>
+      <if test="plantId != null">
+        plant_id = #{plantId}
+      </if>
+      <if test="dateAfter != null">
+        and date_created &gt;= #{dateAfter}
+      </if>
+      <if test="dateBefore != null">
+        and date_created &lt;= #{dateBefore}
+      </if>
+    </where>
   </sql>
 
   <select id="findAllByParams" resultMap="photoMap">

@@ -1,10 +1,8 @@
 package rc.holding.houseplants.configuration;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
-
-
-import lombok.Data;
 
 @ConfigurationProperties(prefix = "app", ignoreUnknownFields = false)
 @Validated
@@ -15,6 +13,8 @@ public class AppProperties {
 
     @Data
     public static class Photos {
+
+        private String photoPath;
         private String originalPath;
         private String thumbnailPath;
     }
