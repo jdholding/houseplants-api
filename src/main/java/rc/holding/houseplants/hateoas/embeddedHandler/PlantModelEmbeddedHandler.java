@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import rc.holding.houseplants.domain.Plant;
 import rc.holding.houseplants.domain.hateoas.api.PlantModel;
 import rc.holding.houseplants.domain.search.CommentParams;
-import rc.holding.houseplants.domain.search.PhotoParms;
+import rc.holding.houseplants.domain.search.PhotoParams;
 import rc.holding.houseplants.hateoas.assembler.CommentModelAssembler;
 import rc.holding.houseplants.hateoas.assembler.PhotoModelAssembler;
 import rc.holding.houseplants.hateoas.assembler.PlantModelAssembler;
@@ -35,7 +35,7 @@ public class PlantModelEmbeddedHandler implements EmbeddedHandler<Plant, PlantMo
         for (Embedded embedded : (Embedded[]) embeddeds) {
             switch (embedded) {
                 case PHOTOS:
-                    var photoParams = PhotoParms.builder().plantId(entity.getId()).size(10).build();
+                    var photoParams = PhotoParams.builder().plantId(entity.getId()).size(10).build();
                     var photos = photoRepo.findAllByParams(photoParams);
                     model.embed("photos", new PhotoModelAssembler().toCollectionModel(photos));
                 case COMMENTS:

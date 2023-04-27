@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rc.holding.houseplants.mybatis.repository.mapper.actionMapper">
+
+    <resultMap id="actionMap" type="Action">
+        <id property="id" column="id" />
+        <result property="plantId" column="plant_id" />
+        <result property="typeId" column="type_id" />
+        <result property="type" column="type" />
+        <result property="userId" column="user_id" />
+        <result property="dateCreated" column="date_created" />
+    </resultMap>
+
+    <resultMap id="actionTypeMap" type="ActionType">
+        <id property="id" column="id" />
+        <result property="label" column="label" />
+    </resultMap>
+
+    <sql id="selectFrom">
+        select
+            a.id,
+            a.plant_id,
+            a.user_id,
+            a.type_id,
+            a.date_created,
+            t.label as type
+        from
+            houseplants.actions a
+            left join houseplants.action_types t on a.type_id = t.id
+    </sql>
+
+    <sql id="where">
+        <where>
+            <if test="plantId != null">
+                a.plant_id = #{plantId}
+            </if>
+            <if test="userId != null">
+                a.user_id = #{userId}
+            </if>
+            <if test="typeId != null">
+                a.type_id = #{typeId}
+            </if>
+            <if test="dateAfter != null">
+                and a.date_created &gt;= #{dateAfter}
+            </if>
+            <if test="dateBefore != null">
+                and a.date_created &lt;= #{dateBefore}
+            </if>
+        </where>
+    </sql>
+
+    <select id="findAllByParams" resultMap="actionMap">
+        <include refid="selectFrom" />
+        <include refid="where" />
+        <include refid="sortMapper.orderBy" />
+    </select>
+
+    <select id="findById" resultMap="actionMap">
+        <include refid="selectFrom" />
+        where
+            id = #{id}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into houseplants.actions (
+            plant_id,
+            user_id,
+            type_id
+            <if test="dateCreated != null">,date_created</if>)
+        values (
+            #{plant_id},
+            #{userId},
+            #{type_id}
+            <if test="dateCreated != null">,#{dateCreated}</if>)
+    </insert>
+
+    <update id="update">
+        update houseplants.actions
+        <set>
+            <if test="plantId != null">plant_id = #{plantId},</if>
+            <if test="typeId != null">type_id = #{typeId},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="dateCreated != null">date_created = #{dateCreated}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="findAllTypes" resultMap="actionTypeMap">
+        select
+            id,
+            label
+        from
+            houseplants.action_types
+    </select>
+</mapper>

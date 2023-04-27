@@ -26,6 +26,7 @@
     <mapper resource="rc/holding/houseplants/mybatis/repository/mapper/userMapper.xml" />
     <mapper resource="rc/holding/houseplants/mybatis/repository/mapper/photoMapper.xml" />
     <mapper resource="rc/holding/houseplants/mybatis/repository/mapper/commentMapper.xml" />
+    <mapper resource="rc/holding/houseplants/mybatis/repository/mapper/actionMapper.xml" />
   </mappers>
 
 </configuration> 

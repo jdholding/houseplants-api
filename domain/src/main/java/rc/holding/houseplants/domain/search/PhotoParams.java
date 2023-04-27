@@ -16,7 +16,7 @@ import rc.holding.houseplants.domain.search.tools.Sorter;
 
 @Value
 @Builder
-public class PhotoParms implements PagedQueryParams<Photo> {
+public class PhotoParams implements PagedQueryParams<Photo> {
     Integer plantId;
     OffsetDateTime dateBefore;
     OffsetDateTime dateAfter;

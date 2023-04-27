@@ -10,6 +10,7 @@ import lombok.Data;
 public class Photo {
     Integer id; 
     Integer plantId;
+    Integer actionId;
     String photoUri;
     String thumbnailUri;
     OffsetDateTime dateCreated; 

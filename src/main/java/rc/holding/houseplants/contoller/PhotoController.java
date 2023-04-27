@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import rc.holding.houseplants.domain.Photo;
 import rc.holding.houseplants.domain.hateoas.api.PhotoModel;
-import rc.holding.houseplants.domain.search.PhotoParms;
+import rc.holding.houseplants.domain.search.PhotoParams;
 import rc.holding.houseplants.domain.search.tools.Sorter;
 import rc.holding.houseplants.exception.ResourceNotFoundException;
 import rc.holding.houseplants.hateoas.embeddedHandler.PhotoModelEmbeddedHandler;
@@ -47,13 +47,13 @@ public class PhotoController {
             @RequestParam(value = "size", defaultValue = "10") Integer size,
             @RequestParam(value = "sort", required = false) String[] sorters) {
 
-        var params = PhotoParms.builder()
+        var params = PhotoParams.builder()
                 .plantId(plantId)
                 .dateBefore(dateBefore)
                 .dateAfter(dateAfter)
                 .page(page)
                 .size(size)
-                .sorters(Sorter.ofAliases(sorters, PhotoParms.Field.SORTFIELD_MAP, PhotoParms.Field.DEFAULT_SORTER))
+                .sorters(Sorter.ofAliases(sorters, PhotoParams.Field.SORTFIELD_MAP, PhotoParams.Field.DEFAULT_SORTER))
                 .build();
 
         var photoPage = repo.findPageByParams(params);

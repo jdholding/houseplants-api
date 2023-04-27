@@ -36,7 +36,7 @@
       <if test="parentId != null">
         parent_id = #{parentId}
       </if>
-      <if test="user != null">
+      <if test="userId != null">
         user_id = #{userId}
       </if> 
       <if test="nameFragment != null">
