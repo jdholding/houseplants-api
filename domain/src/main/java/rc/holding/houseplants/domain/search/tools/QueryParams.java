@@ -2,13 +2,12 @@ package rc.holding.houseplants.domain.search.tools;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
-
 import org.springframework.lang.Nullable;
 
 /**
  * Interface used to type query params accepted by {@link ReadService} and {@link ReadRepository}
  * methods that defines sort capacities.
- * */
+ */
 public interface QueryParams<T> {
   /** Returns the list of Sorter used for the paged query. */
   @Nullable

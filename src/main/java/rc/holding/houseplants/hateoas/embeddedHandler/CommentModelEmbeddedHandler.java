@@ -16,29 +16,39 @@ import rc.holding.houseplants.repository.api.UserRepository;
 @AllArgsConstructor
 public class CommentModelEmbeddedHandler implements EmbeddedHandler<Comment, CommentModel> {
 
-    private final UserRepository userRepo;
-    private final PlantRepository plantRepo;
+  private final UserRepository userRepo;
+  private final PlantRepository plantRepo;
 
-    public enum Embedded implements Embeddable<CommentModel> {
-        USER,
-        PLANT
+  public enum Embedded implements Embeddable<CommentModel> {
+    USER,
+    PLANT
+  }
+
+  @Override
+  public RepresentationModelAssembler<Comment, CommentModel> instanciateAssembler() {
+    return new CommentModelAssembler();
+  }
+
+  @Override
+  public CommentModel addEmbeddeds(
+      Comment entity, CommentModel model, Embeddable<CommentModel>[] embeddeds) {
+    for (CommentModelEmbeddedHandler.Embedded embedded :
+        (CommentModelEmbeddedHandler.Embedded[]) embeddeds) {
+      switch (embedded) {
+        case USER:
+          var user =
+              userRepo
+                  .findById(entity.getUserId())
+                  .orElseThrow(() -> new ResourceNotFoundException(entity.getUserId()));
+          model.embed("user", new UserModelAssembler().toModel(user));
+        case PLANT:
+          var plant =
+              plantRepo
+                  .findById(entity.getPlantId())
+                  .orElseThrow(() -> new ResourceNotFoundException(entity.getPlantId()));
+          model.embed("plant", new PlantModelAssembler().toModel(plant));
+      }
     }
-
-    @Override
-    public RepresentationModelAssembler<Comment, CommentModel> instanciateAssembler() { return new CommentModelAssembler(); }
-
-    @Override
-    public CommentModel addEmbeddeds(Comment entity, CommentModel model, Embeddable<CommentModel>[] embeddeds) {
-        for (CommentModelEmbeddedHandler.Embedded embedded : (CommentModelEmbeddedHandler.Embedded[]) embeddeds) {
-            switch (embedded) {
-                case USER:
-                    var user = userRepo.findById(entity.getUserId()).orElseThrow(() -> new ResourceNotFoundException(entity.getUserId()));
-                    model.embed("user", new UserModelAssembler().toModel(user));
-                case PLANT:
-                    var plant = plantRepo.findById(entity.getPlantId()).orElseThrow(() -> new ResourceNotFoundException(entity.getPlantId()));
-                    model.embed("plant", new PlantModelAssembler().toModel(plant));
-            }
-        }
-        return model;
-    }
+    return model;
+  }
 }

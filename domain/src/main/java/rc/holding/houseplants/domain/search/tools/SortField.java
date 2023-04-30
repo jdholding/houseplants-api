@@ -4,13 +4,11 @@ import java.util.Collections;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import lombok.AllArgsConstructor;
-/**
- * Interface to define a sort field
- */
+
+/** Interface to define a sort field */
 public interface SortField<T> {
-      /** Returns the field name in the database. */
+  /** Returns the field name in the database. */
   String getDbname();
 
   /** Returns a {@link Sorter} with ascending order. */

@@ -1,7 +1,6 @@
 package rc.holding.houseplants.repository.tools;
 
 import java.util.Optional;
-
 import rc.holding.houseplants.domain.search.tools.QueryParams;
 
 public interface ReadRepository<T, ID> {

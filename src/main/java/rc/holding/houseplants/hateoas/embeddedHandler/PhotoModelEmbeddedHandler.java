@@ -13,23 +13,30 @@ import rc.holding.houseplants.repository.api.PlantRepository;
 @Component
 @AllArgsConstructor
 public class PhotoModelEmbeddedHandler implements EmbeddedHandler<Photo, PhotoModel> {
-    private final PlantRepository plantRepo;
-    public enum Embedded implements Embeddable<PhotoModel> {
-        PLANT
-    }
+  private final PlantRepository plantRepo;
 
-    @Override
-    public RepresentationModelAssembler<Photo, PhotoModel> instanciateAssembler() { return new PhotoModelAssembler(); }
+  public enum Embedded implements Embeddable<PhotoModel> {
+    PLANT
+  }
 
-    @Override
-    public PhotoModel addEmbeddeds(Photo entity, PhotoModel model, Embeddable<PhotoModel>[] embeddeds) {
-        for (Embedded embedded : (Embedded[]) embeddeds) {
-            switch (embedded) {
-                case PLANT:
-                    var plant = plantRepo.findById(entity.getPlantId()).orElseThrow(() -> new ResourceNotFoundException(entity.getPlantId()));
-                    model.embed("plant", new PlantModelAssembler().toModel(plant));
-            }
-        }
-        return model;
+  @Override
+  public RepresentationModelAssembler<Photo, PhotoModel> instanciateAssembler() {
+    return new PhotoModelAssembler();
+  }
+
+  @Override
+  public PhotoModel addEmbeddeds(
+      Photo entity, PhotoModel model, Embeddable<PhotoModel>[] embeddeds) {
+    for (Embedded embedded : (Embedded[]) embeddeds) {
+      switch (embedded) {
+        case PLANT:
+          var plant =
+              plantRepo
+                  .findById(entity.getPlantId())
+                  .orElseThrow(() -> new ResourceNotFoundException(entity.getPlantId()));
+          model.embed("plant", new PlantModelAssembler().toModel(plant));
+      }
     }
+    return model;
+  }
 }

@@ -8,19 +8,19 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 @Data
 public class AppProperties {
-    private final Photos photos = new Photos();
-    private final Url url = new Url(); 
+  private final Photos photos = new Photos();
+  private final Url url = new Url();
 
-    @Data
-    public static class Photos {
+  @Data
+  public static class Photos {
 
-        private String photoPath;
-        private String originalPath;
-        private String thumbnailPath;
-    }
+    private String photoPath;
+    private String originalPath;
+    private String thumbnailPath;
+  }
 
-    @Data
-    public static class Url {
-      private String context;
-    }
+  @Data
+  public static class Url {
+    private String context;
+  }
 }

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
-public class InvalidSortFieldException extends RuntimeException{
-    
-    @Getter private String fieldname; 
+public class InvalidSortFieldException extends RuntimeException {
+
+  @Getter private String fieldname;
 }

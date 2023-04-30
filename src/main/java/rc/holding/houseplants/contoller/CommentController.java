@@ -7,5 +7,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/comments")
 @AllArgsConstructor
-public class CommentController {
-}
+public class CommentController {}

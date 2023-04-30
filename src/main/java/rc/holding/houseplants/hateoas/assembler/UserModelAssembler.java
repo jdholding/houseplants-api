@@ -7,11 +7,17 @@ import rc.holding.houseplants.domain.hateoas.api.UserModel;
 
 public class UserModelAssembler extends RepresentationModelAssemblerSupport<User, UserModel> {
 
-    public UserModelAssembler() { super(UserController.class, UserModel.class); }
+  public UserModelAssembler() {
+    super(UserController.class, UserModel.class);
+  }
 
-    @Override
-    protected UserModel instantiateModel(User user) { return new UserModel(user); }
+  @Override
+  protected UserModel instantiateModel(User user) {
+    return new UserModel(user);
+  }
 
-    @Override
-    public UserModel toModel(User user) { return createModelWithId(user.getId(), user); }
+  @Override
+  public UserModel toModel(User user) {
+    return createModelWithId(user.getId(), user);
+  }
 }

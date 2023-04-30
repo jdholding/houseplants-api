@@ -2,15 +2,12 @@ package rc.holding.houseplants.domain.search.tools;
 
 import java.util.Collections;
 import java.util.List;
-
 import lombok.Value;
 
-/**
- * Container for paged lists, containing the results and the metadata of the pageable query.
- */
+/** Container for paged lists, containing the results and the metadata of the pageable query. */
 @Value
 public class Page<T> {
-      /** the results collection */
+  /** the results collection */
   Iterable<T> content;
 
   /** the pageable search metadata */

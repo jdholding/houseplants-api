@@ -2,17 +2,14 @@ package rc.holding.houseplants.hateoas.embeddedHandler;
 
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.lang.Nullable;
-
 import rc.holding.houseplants.domain.hateoas.impl.HalModel;
-/**
- * Interface to handle adding embeddeds to models
- */
+
+/** Interface to handle adding embeddeds to models */
 public interface EmbeddedHandler<T, D extends HalModel<?>> {
-      /**
+  /**
    * Convert given entity to model and handle adding of embedded resources.
    *
    * @param entity entity to convert to model

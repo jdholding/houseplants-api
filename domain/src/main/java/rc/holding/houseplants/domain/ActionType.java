@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class ActionType {
-    Integer id;
-    String label;
+  Integer id;
+  String label;
 }

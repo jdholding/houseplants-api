@@ -9,7 +9,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MapperNamespace {
 
-/** Sets the Mybatis xml mapper namespace */
+  /** Sets the Mybatis xml mapper namespace */
   String value();
 }
-

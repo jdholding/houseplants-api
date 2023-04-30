@@ -2,7 +2,7 @@ package rc.holding.houseplants.domain.search.tools;
 
 import org.springframework.lang.Nullable;
 
-public interface PagedQueryParams<T> extends QueryParams<T>{
+public interface PagedQueryParams<T> extends QueryParams<T> {
   /** Returns the page number used for pagination, starting at 0. */
   @Nullable
   Integer getPage();
