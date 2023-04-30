@@ -80,7 +80,7 @@ values (
     "Crassulaceae",
     null,
     "Jade plant",
-    42)
+    21)
 
 insert into houseplants.plants (
     id,
@@ -101,7 +101,7 @@ values (
     "Malvaceae",
     null,
     "Money tree",
-    42)
+    21)
 
 insert into houseplants.plants (
     id,
@@ -122,7 +122,7 @@ values (
     "Lamiaceae",
     null,
     "Coleus cultivar",
-    42)
+    21)
 
 insert into houseplants.plants (
     id,
@@ -143,4 +143,4 @@ values (
     "Lamiaceae",
     136,
     "Coleus cultivar",
-    11)
+    12)
