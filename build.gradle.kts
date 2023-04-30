@@ -5,6 +5,7 @@ plugins {
 	id("org.springframework.boot") version "3.0.1" apply false
 	id("io.spring.dependency-management") version "1.1.0"
 	id("io.freefair.lombok") version "6.6.1"
+	id("com.diffplug.spotless") version "6.18.0"
 }
 
 group = "rc.holding"
@@ -22,19 +23,32 @@ configurations {
 	}
 }
 
-allprojects{
+allprojects {
 	apply(plugin = "java")
 	apply(plugin = "java-library")
 	apply(plugin = "io.spring.dependency-management")
 	apply(plugin = "io.freefair.lombok")
+	apply(plugin = "com.diffplug.spotless")
 
 	repositories {
 		mavenCentral()
 	}
 
+	spotless {
+		java {
+			googleJavaFormat()
+		}
+		format("misc") {
+			target("**/*.gradle', 'application/src/**/*.yml")
+			trimTrailingWhitespace()
+			indentWithSpaces(2)
+			endWithNewline()
+		}
+	}
 }
-
 apply(plugin= "org.springframework.boot")
+
+
 
 dependencies {
 		implementation(project(":domain"))
@@ -51,6 +65,7 @@ dependencies {
 		implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1")
 		implementation("org.springframework.boot:spring-boot-starter-validation:3.0.1")
 		implementation("org.springframework.hateoas:spring-hateoas:2.0.1")
+		implementation("com.diffplug.spotless:spotless-plugin-gradle:6.18.0")
 		compileOnly("org.projectlombok:lombok")
 		// developmentOnly("org.springframework.boot:spring-boot-devtools:3.0.1")
 		runtimeOnly("org.postgresql:postgresql:42.5.1")
