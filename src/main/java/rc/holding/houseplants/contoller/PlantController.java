@@ -105,7 +105,7 @@ public class PlantController {
     return EntityModel.of(plantModel);
   }
 
-  @PatchMapping(path = "/{id}/edit", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @PatchMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.OK)
   public EntityModel<Plant> editPlant(@PathVariable("id") Integer id, @RequestBody Plant plant) {
     plant.setId(id);

@@ -44,14 +44,14 @@ public class UserController {
     return EntityModel.of(createdUser);
   }
 
-  @PatchMapping(path = "/{id}/edit", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @PatchMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
   public EntityModel<User> editUser(@PathVariable Integer id, @RequestBody User user) {
     user.setId(id);
     var updatedUser = repo.update(user);
     return EntityModel.of(updatedUser);
   }
 
-  @DeleteMapping(path = "/{id}/delete")
+  @DeleteMapping(path = "/{id}")
   @ResponseStatus(HttpStatus.OK)
   public void deleteUser(Integer id) {
     repo.delete(id);
