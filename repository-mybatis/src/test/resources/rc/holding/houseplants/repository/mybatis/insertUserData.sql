@@ -2,7 +2,7 @@ insert into houseplants.users(
     id,
     first_name,
     last_name,
-    email.com,
+    email,
     username)
 values (
     23,
@@ -15,7 +15,7 @@ insert into houseplants.users(
     id,
     first_name,
     last_name,
-    email.com,
+    email,
     username)
 values (
     21,
@@ -28,7 +28,7 @@ insert into houseplants.users(
     id,
     first_name,
     last_name,
-    email.com,
+    email,
     username)
 values (
     12,

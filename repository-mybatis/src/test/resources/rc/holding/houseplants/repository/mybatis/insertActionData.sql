@@ -82,4 +82,4 @@ insert into houseplants.action_types (
     "label")
 values (
     3,
-    "Prue")
+    "Prune")
