@@ -8,7 +8,7 @@
         <id property="id" column="id" />
         <result property="plantId" column="plant_id" />
         <result property="typeId" column="type_id" />
-        <result property="type" column="type" />
+        <result property="typeId" column="type_id" />
         <result property="userId" column="user_id" />
         <result property="dateCreated" column="date_created" />
     </resultMap>
