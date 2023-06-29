@@ -9,7 +9,7 @@ CREATE TABLE houseplants.plants (
 	date_created timestamptz NOT NULL DEFAULT now(),
 	species varchar(255) NULL,
 	genus varchar(255) NULL,
-	"family" varchar(255) NULL,
+	family varchar(255) NULL,
 	parent_id int4 NULL,
 	common_name varchar(255) NULL,
 	user_id int4 NULL,
@@ -26,12 +26,12 @@ CREATE TABLE houseplants.photos (
 	CONSTRAINT photos_pkey PRIMARY KEY (plant_id)
 );
 
-CREATE TABLE houseplants."comments" (
+CREATE TABLE houseplants.comments (
 	id serial4 NOT NULL,
 	plant_id int4 NOT NULL,
 	user_id int4 NOT NULL,
 	date_created timestamptz NOT NULL DEFAULT now(),
-	"text" varchar(4000) NULL,
+	text varchar(4000) NULL,
 	is_hidden bool NOT NULL DEFAULT false,
 	CONSTRAINT comments_pkey PRIMARY KEY (id)
 );
@@ -47,7 +47,7 @@ CREATE TABLE houseplants.actions (
 
 CREATE TABLE houseplants.action_types (
 	id serial4 NOT NULL,
-	"label" varchar(255) NULL,
+	label varchar(255) NULL,
 	CONSTRAINT action_types_pkey PRIMARY KEY (id)
 );
 

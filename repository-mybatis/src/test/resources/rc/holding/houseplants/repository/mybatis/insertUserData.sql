@@ -6,10 +6,10 @@ insert into houseplants.users(
     username)
 values (
     23,
-    "Michael",
-    "Jordan",
-    "michael.jordan@email.com",
-    "mj23")
+    'Michael',
+    'Jordan',
+    'michael.jordan@email.com',
+    'mj23')
 
 insert into houseplants.users(
     id,
@@ -19,10 +19,10 @@ insert into houseplants.users(
     username)
 values (
     21,
-    "Jimmy",
-    "Butler",
-    "jimmy@email.com",
-    "jimmyG")
+    'Jimmy',
+    'Butler',
+    'jimmy@email.com',
+    'jimmyG')
 
 insert into houseplants.users(
     id,
@@ -32,7 +32,7 @@ insert into houseplants.users(
     username)
 values (
     12,
-    "Kirk",
-    "Hinrich",
-    "kirk@email.com",
-    "captainKirk")
+    'Kirk',
+    'Hinrich',
+    'kirk@email.com',
+    'captainKirk')
