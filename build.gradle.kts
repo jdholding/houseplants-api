@@ -4,13 +4,13 @@ plugins {
 	application
 	id("org.springframework.boot") version "3.0.1" apply false
 	id("io.spring.dependency-management") version "1.1.0"
-	id("io.freefair.lombok") version "6.6.1"
+	id("io.freefair.lombok") version "8.0.1"
 	id("com.diffplug.spotless") version "6.18.0"
 }
 
 group = "rc.holding"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_17
+java.sourceCompatibility = JavaVersion.VERSION_19
 
 application {
 	mainModule.set("rc.holding.houseplants")
@@ -66,6 +66,7 @@ dependencies {
 		implementation("org.springframework.boot:spring-boot-starter-validation:3.0.1")
 		implementation("org.springframework.hateoas:spring-hateoas:2.0.1")
 		implementation("com.diffplug.spotless:spotless-plugin-gradle:6.18.0")
+		implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
 		compileOnly("org.projectlombok:lombok")
 		// developmentOnly("org.springframework.boot:spring-boot-devtools:3.0.1")
 		runtimeOnly("org.postgresql:postgresql:42.5.1")

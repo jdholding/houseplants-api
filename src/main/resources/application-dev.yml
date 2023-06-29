@@ -1,13 +1,13 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5445/postgres
+    url: jdbc:postgresql://localhost:5432/houseplants
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
 app:
   photos:
-    photo-path: /Users/jdholding/srv/houseplants/
-    original-path: /Users/jdholding/srv/houseplants/originals/
-    thumbnail-path: /Users/jdholding/srv/houseplants/thumbnails/
+    photo-path: /srv/houseplants/
+    original-path: /srv/houseplants/originals/
+    thumbnail-path: /srv/houseplants/thumbnails/
   url:
     context: http://localhost:8080  
