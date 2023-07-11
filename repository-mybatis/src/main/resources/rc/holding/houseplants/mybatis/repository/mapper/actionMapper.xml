@@ -11,6 +11,10 @@
         <result property="typeId" column="type_id" />
         <result property="userId" column="user_id" />
         <result property="dateCreated" column="date_created" />
+
+        <association property="type"
+            select="findTypeById"
+            column="type_id" />
     </resultMap>
 
     <resultMap id="actionTypeMap" type="ActionType">
@@ -87,11 +91,26 @@
         where id = #{id}
     </update>
 
-    <select id="findAllTypes" resultMap="actionTypeMap">
+    <select id="findTypesByParams" resultMap="actionTypeMap">
         select
             id,
             label
         from
             houseplants.action_types
+        <if test="nameFragment != null">
+            where
+                lower(name) like ('%' || lower(#{nameFragment} || '%'))
+        </if>
+        <include refid="sortMapper.orderBy" />
+    </select>
+
+    <select id="findTypeById" resultMap="actionTypeMap">
+        select
+            id,
+            label
+        from
+            houseplants.action_types
+        where
+            id = #{id}
     </select>
 </mapper>

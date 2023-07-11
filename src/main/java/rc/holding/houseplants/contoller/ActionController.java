@@ -12,6 +12,8 @@ import rc.holding.houseplants.domain.Action;
 import rc.holding.houseplants.domain.ActionType;
 import rc.holding.houseplants.domain.hateoas.api.ActionModel;
 import rc.holding.houseplants.domain.search.ActionParams;
+import rc.holding.houseplants.domain.search.ActionTypeParams;
+import rc.holding.houseplants.domain.search.ActionTypeParams.Field;
 import rc.holding.houseplants.domain.search.tools.Sorter;
 import rc.holding.houseplants.exception.ResourceNotFoundException;
 import rc.holding.houseplants.hateoas.embeddedHandler.ActionModelEmbeddedHandler;
@@ -81,7 +83,14 @@ public class ActionController {
   }
 
   @GetMapping(value = "/types", produces = MediaType.APPLICATION_JSON_VALUE)
-  List<ActionType> getActionTypes() {
-    return repo.findAllTypes();
+  List<ActionType> getActionTypes(
+      @RequestParam(value = "nameFragment", required = false) String nameFragment,
+      @RequestParam(value = "sort", required = false) String[] sorters) {
+    var params =
+        ActionTypeParams.builder()
+            .nameFragment(nameFragment)
+            .sorters(Sorter.ofAliases(sorters, Field.SORTFILED_MAP, Field.DEFAULT_SORTER))
+            .build();
+    return repo.findTypesPageByParams(params);
   }
 }

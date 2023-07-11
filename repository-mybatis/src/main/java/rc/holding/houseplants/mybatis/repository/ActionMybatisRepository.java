@@ -51,7 +51,7 @@ public class ActionMybatisRepository extends AbstractMapper implements ActionRep
   }
 
   @Override
-  public List<ActionType> findAllTypes() {
-    return selectList("findAllTypes", null);
+  public List<ActionType> findTypesPageByParams(QueryParams<ActionType> params) {
+    return selectList("findTypesByParams", params);
   }
 }

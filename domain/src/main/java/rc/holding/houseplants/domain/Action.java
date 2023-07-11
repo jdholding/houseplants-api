@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 public class Action {
   Integer id;
-  Integer typeId;
   Integer plantId;
   Integer userId;
   OffsetDateTime dateCreated;
+  ActionType type;
 }
