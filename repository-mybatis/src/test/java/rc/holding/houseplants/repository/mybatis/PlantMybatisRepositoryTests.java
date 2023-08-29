@@ -191,15 +191,17 @@ public class PlantMybatisRepositoryTests extends AbstractContainerBaseTest {
   @Test
   @DisplayName("findByParams with userId param returns the expected results")
   public void findByParamsUserId() {
-    var params = PlantParams.builder().page(0).size(10).userId(21).sorter(Field.DEFAULT_SORTER).build();
-    assertThat(repo.findPageByParams(params).getContent()).containsExactly(mocks.get("money"), mocks.get("jade"), mocks.get("cole"));
+    var params =
+        PlantParams.builder().page(0).size(10).userId(21).sorter(Field.DEFAULT_SORTER).build();
+    assertThat(repo.findPageByParams(params).getContent())
+        .containsExactly(mocks.get("money"), mocks.get("jade"), mocks.get("cole"));
   }
 
   @Test
   @DisplayName("test pagination on findPageByParams")
   public void testingPagination() {
     var params = PlantParams.builder().page(2).size(2).sorter(Field.DEFAULT_SORTER).build();
-    assertThat(repo.findPageByParams(params).getContent()).containsExactly(mocks.get("rubber"),
-        mocks.get("coleBaby"));
+    assertThat(repo.findPageByParams(params).getContent())
+        .containsExactly(mocks.get("rubber"), mocks.get("coleBaby"));
   }
 }

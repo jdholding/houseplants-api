@@ -45,6 +45,7 @@ public class PlantController {
         PlantParams.builder()
             .parentId(parentId)
             .trefleId(trefleId)
+            .userId(userId)
             .nameFragment(nameFragment)
             .page(page)
             .size(size)
