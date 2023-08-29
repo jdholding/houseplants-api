@@ -33,7 +33,7 @@ values (
     124,
     112,
     timestamp '2023-01-23 12:29:17.498 +0100',
-    'Ficus lytrata',
+    'Ficus lyrata',
     'Ficus',
     'Moraceae',
     null,
