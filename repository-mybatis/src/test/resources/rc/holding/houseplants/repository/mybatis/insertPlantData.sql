@@ -11,7 +11,7 @@ insert into houseplants.plants (
 values (
     123,
     111,
-    timestamp '2023-01-13 12:29:17.498 +0100',
+    timestamp '2023-01-13 12:29:17.498Z',
     'Ficus elastica',
     'Ficus',
     'Moraceae',
@@ -32,7 +32,7 @@ insert into houseplants.plants (
 values (
     124,
     112,
-    timestamp '2023-01-23 12:29:17.498 +0100',
+    timestamp '2023-01-23 12:29:17.498Z',
     'Ficus lyrata',
     'Ficus',
     'Moraceae',
@@ -53,7 +53,7 @@ insert into houseplants.plants (
 values (
     125,
     121,
-    timestamp '2023-02-13 12:29:17.498 +0100',
+    timestamp '2023-02-13 12:29:17.498Z',
     'Aloe vera',
     'Aloe',
     'Asphodelaceae',
@@ -74,7 +74,7 @@ insert into houseplants.plants (
 values (
     133,
     116,
-    timestamp '2023-02-03 12:29:17.498 +0100',
+    timestamp '2023-02-03 12:29:17.498Z',
     'Crassula ovata',
     'Crassula',
     'Crassulaceae',
@@ -95,7 +95,7 @@ insert into houseplants.plants (
 values (
     134,
     444,
-    timestamp '2023-04-13 12:29:17.498 +0100',
+    timestamp '2023-04-13 12:29:17.498Z',
     'Pachira aquatica',
     'Pachira',
     'Malvaceae',
@@ -116,7 +116,7 @@ insert into houseplants.plants (
 values (
     136,
     777,
-    timestamp '2022-01-13 12:29:17.498 +0100',
+    timestamp '2022-01-13 12:29:17.498Z',
     'Coleus scutellarioides',
     'Coleus',
     'Lamiaceae',
@@ -137,7 +137,7 @@ insert into houseplants.plants (
 values (
     631,
     777,
-    timestamp '2022-11-13 12:29:17.498 +0100',
+    timestamp '2022-11-13 12:29:17.498Z',
     'Coleus scutellarioides',
     'Coleus',
     'Lamiaceae',

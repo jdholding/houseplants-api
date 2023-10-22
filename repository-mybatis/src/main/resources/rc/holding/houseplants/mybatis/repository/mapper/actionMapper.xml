@@ -8,10 +8,8 @@
         <id property="id" column="id" />
         <result property="plantId" column="plant_id" />
         <result property="typeId" column="type_id" />
-        <result property="typeId" column="type_id" />
         <result property="userId" column="user_id" />
         <result property="dateCreated" column="date_created" />
-
         <association property="type"
             select="findTypeById"
             column="type_id" />
@@ -28,11 +26,9 @@
             a.plant_id,
             a.user_id,
             a.type_id,
-            a.date_created,
-            t.label as type
+            a.date_created
         from
             houseplants.actions a
-            left join houseplants.action_types t on a.type_id = t.id
     </sql>
 
     <sql id="where">
@@ -64,7 +60,7 @@
     <select id="findById" resultMap="actionMap">
         <include refid="selectFrom" />
         where
-            id = #{id}
+            a.id = #{id}
     </select>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
@@ -106,11 +102,11 @@
 
     <select id="findTypeById" resultMap="actionTypeMap">
         select
-            id,
-            label
+            t.id,
+            t.label
         from
-            houseplants.action_types
+            houseplants.action_types t
         where
-            id = #{id}
+            t.id = #{id}
     </select>
 </mapper>

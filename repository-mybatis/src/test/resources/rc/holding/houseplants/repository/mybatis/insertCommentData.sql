@@ -8,10 +8,10 @@ insert into houseplants.comments (
 values (
     1,
     123,
-    23,
-    timestamp '2023-01-23 12:29:17.498 +0100',
+    69,
+    timestamp with time zone '2023-01-23 12:29:17.498Z',
     'Not enough light',
-    false)
+    false);
 
 insert into houseplants.comments (
     id,
@@ -24,9 +24,9 @@ values (
     2,
     124,
     21,
-    timestamp '2023-04-23 12:29:17.498 +0100',
+    timestamp with time zone '2023-04-23 12:29:17.498Z',
     'Wow! Looks great!',
-    false)
+    false);
 
 insert into houseplants.comments (
     id,
@@ -37,11 +37,11 @@ insert into houseplants.comments (
     is_hidden)
 values (
     3,
-    133,
+    123,
     21,
-    timestamp '2023-03-23 12:29:17.498 +0100',
+    timestamp with time zone '2023-03-23 12:29:17.498Z',
     'Needs to be re-potted',
-    false)
+    false);
 
 insert into houseplants.comments (
     id,
@@ -54,9 +54,9 @@ values (
     4,
     134,
     23,
-    timestamp '2023-04-23 12:29:17.498 +0100',
+    timestamp with time zone '2023-04-23 12:21:17.498Z',
     'Your plant looks like trash and you are a bad person',
-    true)
+    true);
 
 insert into houseplants.comments (
     id,
@@ -69,6 +69,6 @@ values (
     5,
     136,
     12,
-    timestamp '2022-08-13 12:35:17.498 +0100',
+    timestamp with time zone '2022-08-13 12:35:17.498Z',
     'Can I take some cuttings?',
-    false)
+    false);
