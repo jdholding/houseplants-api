@@ -70,9 +70,9 @@
             type_id
             <if test="dateCreated != null">,date_created</if>)
         values (
-            #{plant_id},
+            #{plantId},
             #{userId},
-            #{type_id}
+            #{typeId}
             <if test="dateCreated != null">,#{dateCreated}</if>)
     </insert>
 

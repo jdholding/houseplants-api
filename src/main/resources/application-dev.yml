@@ -10,4 +10,7 @@ app:
     original-path: /srv/houseplants/originals/
     thumbnail-path: /srv/houseplants/thumbnails/
   url:
-    context: http://localhost:8080  
+    context: http://localhost:8080
+trefle:
+  url: trefle.io/api/v1
+  token:
