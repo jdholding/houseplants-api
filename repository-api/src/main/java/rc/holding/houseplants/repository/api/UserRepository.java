@@ -1,15 +1,10 @@
 package rc.holding.houseplants.repository.api;
 
-import java.util.List;
-import java.util.Optional;
 import rc.holding.houseplants.domain.User;
+import rc.holding.houseplants.repository.tools.PagedReadRepository;
 
-public interface UserRepository {
-  List<User> findAll();
-
-  Optional<User> findById(Integer id);
-
-  User insert(User user);
+public interface UserRepository extends PagedReadRepository<User, Integer> {
+  Integer insert(User user);
 
   User update(User user);
 

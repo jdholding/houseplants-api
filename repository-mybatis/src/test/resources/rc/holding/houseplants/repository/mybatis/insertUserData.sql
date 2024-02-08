@@ -9,7 +9,7 @@ values (
     'Michael',
     'Jordan',
     'michael.jordan@email.com',
-    'mj23')
+    'mj23');
 
 insert into houseplants.users(
     id,
@@ -22,7 +22,7 @@ values (
     'Jimmy',
     'Butler',
     'jimmy@email.com',
-    'jimmyG')
+    'jimmyG');
 
 insert into houseplants.users(
     id,
@@ -35,4 +35,17 @@ values (
     'Kirk',
     'Hinrich',
     'kirk@email.com',
-    'captainKirk')
+    'captainKirk');
+
+insert into houseplants.users(
+    id,
+    first_name,
+    last_name,
+    email,
+    username)
+values (
+    69,
+    'Jimmer',
+    'Fredette',
+    'jimmer@email.com',
+    'jimmer');

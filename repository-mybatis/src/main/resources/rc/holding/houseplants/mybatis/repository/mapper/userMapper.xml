@@ -23,10 +23,18 @@
           houseplants.users  
     </sql>
 
-    <select id="findAll" resultMap="userMap">
+    <sql id="where">
+      <where>
+        <if test="usernameFragment != null">
+          lower(username) like ('%' || lower(#{usernameFragment} || '%'))
+        </if>
+      </where>
+    </sql>
+
+    <select id="findAllByParams" resultMap="userMap">
       <include refid="selectFrom" />
-      order by
-        id
+      <include refid="where" />
+      <include refid="sortMapper.orderBy" />
     </select>
 
     <select id="findById" resultMap="userMap">
